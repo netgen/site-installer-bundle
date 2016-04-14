@@ -1,0 +1,58 @@
+<?php
+
+namespace Netgen\Bundle\MoreInstallerBundle\Installer;
+
+use EzSystems\PlatformInstallerBundle\Installer\DbBasedInstaller;
+use EzSystems\PlatformInstallerBundle\Installer\Installer;
+
+abstract class BaseInstaller extends DbBasedInstaller implements Installer
+{
+    /**
+     * Handle inserting of schema, schema should ideally be in ISO SQL format.
+     *
+     * @param string $schemaFile
+     * @param string $controlTableName
+     *
+     * Schema file is created with: mysqldump ngmore --no-data > schema.sql
+     */
+    protected function importSchemaFile($schemaFile, $controlTableName = null)
+    {
+        if ($controlTableName !== null) {
+            if ($this->db->getSchemaManager()->tablesExist(array($controlTableName))) {
+                $this->output->writeln('<comment>Schema already exists in the database, skipping schema import for file <info>' . $schemaFile . '</info></comment>');
+
+                return;
+            }
+        }
+
+        $this->runQueriesFromFile($schemaFile);
+    }
+
+    /**
+     * Handle inserting of sql dump, sql dump should ideally be in ISO SQL format.
+     *
+     * @param string $dataFile
+     * @param string $controlTableName
+     *
+     * Data file is created with: mysqldump ngmore --no-create-info --extended-insert=false > data.sql
+     */
+    protected function importDataFile($dataFile, $controlTableName = null)
+    {
+        if ($controlTableName !== null) {
+            $query = $this->db->createQueryBuilder();
+            $query->select('count(*) AS count')
+                ->from($controlTableName);
+
+            $data = $query->execute()->fetchAll();
+
+            $contentCount = (int)$data[0]['count'];
+            if ($contentCount > 0) {
+                $this->output->writeln('<comment>Data already exists in the database, skipping data import for file <info>' . $dataFile . '</info></comment>');
+
+                return;
+            }
+        }
+
+        $this->runQueriesFromFile($dataFile);
+    }
+}

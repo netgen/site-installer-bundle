@@ -1,0 +1,16 @@
+{
+    "name": "netgen/more-installer-bundle",
+    "description": "This bundle installs a Netgen More project",
+    "authors": [
+        {
+            "name": "Netgen",
+            "homepage": "http://www.netgenlabs.com"
+        }
+    ],
+    "require": {
+        "ezsystems/ezpublish-kernel": "^6.1"
+    },
+    "autoload": {
+        "psr-4": { "Netgen\\Bundle\\MoreInstallerBundle\\": "" }
+    }
+}
