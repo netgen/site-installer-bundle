@@ -3,7 +3,7 @@ parameters:
 
 services:
     ngmore_installer.installer.ngmore:
-        class: %ngmore_installer.installer.ngmore.class%
+        class: "%ngmore_installer.installer.ngmore.class%"
         calls:
             - [setInstallerDataPath, [%kernel.root_dir%/../vendor/netgen/more-site-data/ngmore]]
             - [setStoragePath, [web/var/site/storage]]
