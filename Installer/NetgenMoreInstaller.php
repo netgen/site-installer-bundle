@@ -82,6 +82,10 @@ class NetgenMoreInstaller extends BaseInstaller
             return;
         }
 
+        if (!$fs->exists($this->installerDataPath . '/storage')) {
+            return;
+        }
+
         $this->output->writeln('Copying storage directory to <info>' . $this->storagePath . '</info>');
 
         $fs->mirror(
