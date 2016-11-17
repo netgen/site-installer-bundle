@@ -10,3 +10,12 @@ services:
         parent: ezplatform.installer.db_based_installer
         tags:
             - {name: ezplatform.installer, type: ngmore}
+
+    ngmore_installer.installer.ngmore_clean:
+        class: %ngmore_installer.installer.ngmore.class%
+        calls:
+            - [setInstallerDataPath, [%kernel.root_dir%/../vendor/netgen/more-site-data/ngmore-clean]]
+            - [setStoragePath, [web/var/site/storage]]
+        parent: ezplatform.installer.db_based_installer
+        tags:
+            - {name: ezplatform.installer, type: ngmore-clean}
