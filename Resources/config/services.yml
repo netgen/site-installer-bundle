@@ -3,7 +3,7 @@ services:
         class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
         public: false
         calls:
-            - [setInstallerDataPath, ["%kernel.root_dir%/../vendor/netgen/more-site-data/ngmore"]]
+            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/more-site-data/ngmore"]]
             - [setStoragePath, [web/var/site/storage]]
         parent: ezplatform.installer.db_based_installer
         tags:
@@ -13,7 +13,7 @@ services:
         class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
         public: false
         calls:
-            - [setInstallerDataPath, ["%kernel.root_dir%/../vendor/netgen/more-site-data/ngmore-clean"]]
+            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/more-site-data/ngmore-clean"]]
             - [setStoragePath, [web/var/site/storage]]
         parent: ezplatform.installer.db_based_installer
         tags:
