@@ -4,6 +4,7 @@ parameters:
 services:
     ngmore_installer.installer.ngmore:
         class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
+        public: false
         calls:
             - [setInstallerDataPath, ["%kernel.root_dir%/../vendor/netgen/more-site-data/ngmore"]]
             - [setStoragePath, [web/var/site/storage]]
@@ -13,6 +14,7 @@ services:
 
     ngmore_installer.installer.ngmore_clean:
         class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
+        public: false
         calls:
             - [setInstallerDataPath, ["%kernel.root_dir%/../vendor/netgen/more-site-data/ngmore-clean"]]
             - [setStoragePath, [web/var/site/storage]]
