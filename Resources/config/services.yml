@@ -1,6 +1,3 @@
-parameters:
-    ngmore_installer.installer.ngmore.class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
-
 services:
     ngmore_installer.installer.ngmore:
         class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
