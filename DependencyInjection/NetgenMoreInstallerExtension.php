@@ -7,7 +7,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
-class NetgenMoreInstallerExtension extends Extension
+final class NetgenMoreInstallerExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {

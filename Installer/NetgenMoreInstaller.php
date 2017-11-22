@@ -9,12 +9,12 @@ class NetgenMoreInstaller extends BaseInstaller
     /**
      * @var string
      */
-    protected $installerDataPath;
+    private $installerDataPath;
 
     /**
      * @var string
      */
-    protected $storagePath;
+    private $storagePath;
 
     /**
      * Sets the installer data path.
