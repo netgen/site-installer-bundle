@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\MoreInstallerBundle\Installer;
 
 use EzSystems\PlatformInstallerBundle\Installer\DbBasedInstaller;
@@ -18,7 +20,7 @@ abstract class BaseInstaller extends DbBasedInstaller implements Installer
     protected function importSchemaFile($schemaFile, $controlTableName = null)
     {
         if ($controlTableName !== null) {
-            if ($this->db->getSchemaManager()->tablesExist(array($controlTableName))) {
+            if ($this->db->getSchemaManager()->tablesExist([$controlTableName])) {
                 $this->output->writeln('<comment>Schema already exists in the database, skipping schema import for file <info>' . $schemaFile . '</info></comment>');
 
                 return;
@@ -45,7 +47,7 @@ abstract class BaseInstaller extends DbBasedInstaller implements Installer
 
             $data = $query->execute()->fetchAll();
 
-            $contentCount = (int)$data[0]['count'];
+            $contentCount = (int) $data[0]['count'];
             if ($contentCount > 0) {
                 $this->output->writeln('<comment>Data already exists in the database, skipping data import for file <info>' . $dataFile . '</info></comment>');
 

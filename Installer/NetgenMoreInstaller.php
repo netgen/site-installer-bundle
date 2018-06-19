@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Netgen\Bundle\MoreInstallerBundle\Installer;
 
 use Symfony\Component\Filesystem\Filesystem;
