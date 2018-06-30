@@ -1,10 +1,10 @@
 {
     "name": "netgen/more-installer-bundle",
-    "description": "This bundle installs a Netgen More project",
+    "description": "This bundle installs a Netgen Base Site project",
     "authors": [
         {
             "name": "Netgen",
-            "homepage": "http://www.netgenlabs.com"
+            "homepage": "https://www.netgenlabs.com"
         }
     ],
     "require": {
