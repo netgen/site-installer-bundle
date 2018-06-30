@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Bundle\MoreInstallerBundle\Installer;
 
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
 
 class NetgenMoreInstaller extends BaseInstaller
 {
@@ -79,9 +80,21 @@ class NetgenMoreInstaller extends BaseInstaller
         $fs = new Filesystem();
 
         if ($fs->exists($this->storagePath)) {
-            $this->output->writeln('<comment>Storage directory <info>' . $this->storagePath . '</info> already exists, skipping creation...</comment>');
+            $finder = new Finder();
+            $finder
+                ->followLinks()
+                ->ignoreVCS(false)
+                ->ignoreDotFiles(false)
+                ->ignoreUnreadableDirs(false)
+                ->in($this->storagePath);
 
-            return;
+            if ($finder->count() > 0) {
+                $this->output->writeln('<comment>Storage directory <info>' . $this->storagePath . '</info> already exists and is not empty, skipping creation...</comment>');
+
+                return;
+            }
+
+            $fs->remove($this->storagePath);
         }
 
         if (!$fs->exists($this->installerDataPath . '/storage')) {
