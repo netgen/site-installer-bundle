@@ -1,6 +1,7 @@
 {
-    "name": "netgen/more-installer-bundle",
-    "description": "This bundle installs a Netgen Base Site project",
+    "name": "netgen/site-installer-bundle",
+    "description": "This bundle installs various Netgen Site projects",
+    "license": "GPL-2.0-only",
     "authors": [
         {
             "name": "Netgen",
@@ -15,7 +16,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.x-dev"
+            "dev-master": "1.0.x-dev"
         }
     }
 }

@@ -3,18 +3,18 @@ services:
         class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
         public: false
         calls:
-            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/ngmore"]]
+            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media"]]
             - [setStoragePath, [web/var/site/storage]]
         parent: ezplatform.installer.db_based_installer
         tags:
-            - {name: ezplatform.installer, type: netgen-media-site}
+            - {name: ezplatform.installer, type: netgen-media}
 
     ngmore_installer.installer.ngmore_clean:
         class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
         public: false
         calls:
-            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/ngmore-clean"]]
+            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media-clean"]]
             - [setStoragePath, [web/var/site/storage]]
         parent: ezplatform.installer.db_based_installer
         tags:
-            - {name: ezplatform.installer, type: netgen-clean-site}
+            - {name: ezplatform.installer, type: netgen-media-clean}
