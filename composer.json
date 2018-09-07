@@ -12,7 +12,7 @@
         "ezsystems/ezpublish-kernel": "^7.0"
     },
     "autoload": {
-        "psr-4": { "Netgen\\Bundle\\MoreInstallerBundle\\": "bundle/" }
+        "psr-4": { "Netgen\\Bundle\\SiteInstallerBundle\\": "bundle/" }
     },
     "extra": {
         "branch-alias": {

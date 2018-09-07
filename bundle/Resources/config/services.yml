@@ -1,6 +1,6 @@
 services:
-    ngmore_installer.installer.ngmore:
-        class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
+    netgen_site_installer.media_site:
+        class: Netgen\Bundle\SiteInstallerBundle\Installer\NetgenSiteInstaller
         public: false
         calls:
             - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media"]]
@@ -9,8 +9,8 @@ services:
         tags:
             - {name: ezplatform.installer, type: netgen-media}
 
-    ngmore_installer.installer.ngmore_clean:
-        class: Netgen\Bundle\MoreInstallerBundle\Installer\NetgenMoreInstaller
+    netgen_site_installer.media_site_clean:
+        class: Netgen\Bundle\SiteInstallerBundle\Installer\NetgenSiteInstaller
         public: false
         calls:
             - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media-clean"]]

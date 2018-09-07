@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\MoreInstallerBundle\Installer;
+namespace Netgen\Bundle\SiteInstallerBundle\Installer;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
-class NetgenMoreInstaller extends BaseInstaller
+class NetgenSiteInstaller extends BaseInstaller
 {
     /**
      * @var string
@@ -19,32 +19,17 @@ class NetgenMoreInstaller extends BaseInstaller
      */
     private $storagePath;
 
-    /**
-     * Sets the installer data path.
-     *
-     * @param string $installerDataPath
-     */
-    public function setInstallerDataPath($installerDataPath)
+    public function setInstallerDataPath(string $installerDataPath): void
     {
         $this->installerDataPath = $installerDataPath;
     }
 
-    /**
-     * Sets the storage path.
-     *
-     * @param string $storagePath
-     */
-    public function setStoragePath($storagePath)
+    public function setStoragePath(string $storagePath): void
     {
         $this->storagePath = $storagePath;
     }
 
-    /**
-     * Handle inserting of schema, schema should ideally be in ISO SQL format.
-     *
-     * Schema file is created with: mysqldump ngmore --no-data > schema.sql
-     */
-    public function importSchema()
+    public function importSchema(): void
     {
         $this->importSchemaFile(
             $this->installerDataPath . '/../schema/schema.sql',
@@ -52,12 +37,7 @@ class NetgenMoreInstaller extends BaseInstaller
         );
     }
 
-    /**
-     * Handle inserting of sql dump, sql dump should ideally be in ISO SQL format.
-     *
-     * Data file is created with: mysqldump ngmore --no-create-info --extended-insert=false > data.sql
-     */
-    public function importData()
+    public function importData(): void
     {
         $this->importDataFile(
             $this->installerDataPath . '/data.sql',
@@ -65,17 +45,11 @@ class NetgenMoreInstaller extends BaseInstaller
         );
     }
 
-    /**
-     * @deprecated Inactive since 6.1, further info: https://jira.ez.no/browse/EZP-25369
-     */
-    public function createConfiguration()
+    public function createConfiguration(): void
     {
     }
 
-    /**
-     * Handle optional import of binary files to var folder.
-     */
-    public function importBinaries()
+    public function importBinaries(): void
     {
         $fs = new Filesystem();
 

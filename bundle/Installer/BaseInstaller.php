@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Netgen\Bundle\MoreInstallerBundle\Installer;
+namespace Netgen\Bundle\SiteInstallerBundle\Installer;
 
 use EzSystems\PlatformInstallerBundle\Installer\DbBasedInstaller;
 use EzSystems\PlatformInstallerBundle\Installer\Installer;
@@ -12,12 +12,9 @@ abstract class BaseInstaller extends DbBasedInstaller implements Installer
     /**
      * Handle inserting of schema, schema should ideally be in ISO SQL format.
      *
-     * @param string $schemaFile
-     * @param string $controlTableName
-     *
-     * Schema file is created with: mysqldump ngmore --no-data > schema.sql
+     * Schema file is created with: mysqldump ngsite --no-data > schema.sql
      */
-    protected function importSchemaFile($schemaFile, $controlTableName = null)
+    protected function importSchemaFile(string $schemaFile, string $controlTableName = null): void
     {
         if ($controlTableName !== null) {
             if ($this->db->getSchemaManager()->tablesExist([$controlTableName])) {
@@ -33,12 +30,9 @@ abstract class BaseInstaller extends DbBasedInstaller implements Installer
     /**
      * Handle inserting of sql dump, sql dump should ideally be in ISO SQL format.
      *
-     * @param string $dataFile
-     * @param string $controlTableName
-     *
-     * Data file is created with: mysqldump ngmore --no-create-info --extended-insert=false > data.sql
+     * Data file is created with: mysqldump ngsite --no-create-info --extended-insert=false > data.sql
      */
-    protected function importDataFile($dataFile, $controlTableName = null)
+    protected function importDataFile(string $dataFile, string $controlTableName = null): void
     {
         if ($controlTableName !== null) {
             $query = $this->db->createQueryBuilder();
