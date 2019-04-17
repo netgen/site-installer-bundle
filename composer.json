@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "ezsystems/ezpublish-kernel": "^7.0"
+        "ezsystems/ezpublish-kernel": "^7.5"
     },
     "autoload": {
         "psr-4": { "Netgen\\Bundle\\SiteInstallerBundle\\": "bundle/" }
