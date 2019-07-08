@@ -4,7 +4,7 @@ services:
         public: false
         calls:
             - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media"]]
-            - [setStoragePath, [web/var/site/storage]]
+            - [setStoragePath, [public/var/site/storage]]
         parent: ezplatform.installer.db_based_installer
         tags:
             - {name: ezplatform.installer, type: netgen-media}
@@ -14,7 +14,7 @@ services:
         public: false
         calls:
             - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media-clean"]]
-            - [setStoragePath, [web/var/site/storage]]
+            - [setStoragePath, [public/var/site/storage]]
         parent: ezplatform.installer.db_based_installer
         tags:
             - {name: ezplatform.installer, type: netgen-media-clean}
