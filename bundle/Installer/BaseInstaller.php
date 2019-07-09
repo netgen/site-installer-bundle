@@ -16,12 +16,10 @@ abstract class BaseInstaller extends DbBasedInstaller implements Installer
      */
     protected function importSchemaFile(string $schemaFile, string $controlTableName = null): void
     {
-        if ($controlTableName !== null) {
-            if ($this->db->getSchemaManager()->tablesExist([$controlTableName])) {
-                $this->output->writeln('<comment>Schema already exists in the database, skipping schema import for file <info>' . $schemaFile . '</info></comment>');
+        if ($controlTableName !== null && $this->db->getSchemaManager()->tablesExist([$controlTableName])) {
+            $this->output->writeln('<comment>Schema already exists in the database, skipping schema import for file <info>' . $schemaFile . '</info></comment>');
 
-                return;
-            }
+            return;
         }
 
         $this->runQueriesFromFile($schemaFile);
