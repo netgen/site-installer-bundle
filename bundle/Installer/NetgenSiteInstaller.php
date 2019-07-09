@@ -12,12 +12,12 @@ class NetgenSiteInstaller extends BaseInstaller
     /**
      * @var string
      */
-    private $installerDataPath;
+    protected $installerDataPath;
 
     /**
      * @var string
      */
-    private $storagePath;
+    protected $storagePath;
 
     public function setInstallerDataPath(string $installerDataPath): void
     {
