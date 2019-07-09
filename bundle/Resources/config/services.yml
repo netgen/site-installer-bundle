@@ -1,7 +1,6 @@
 services:
     netgen_site_installer.media_site:
         class: Netgen\Bundle\SiteInstallerBundle\Installer\NetgenSiteInstaller
-        public: false
         calls:
             - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media"]]
             - [setStoragePath, [public/var/site/storage]]
@@ -11,7 +10,6 @@ services:
 
     netgen_site_installer.media_site_clean:
         class: Netgen\Bundle\SiteInstallerBundle\Installer\NetgenSiteInstaller
-        public: false
         calls:
             - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media-clean"]]
             - [setStoragePath, [public/var/site/storage]]
