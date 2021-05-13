@@ -9,15 +9,9 @@ use Symfony\Component\Finder\Finder;
 
 class NetgenSiteInstaller extends BaseInstaller
 {
-    /**
-     * @var string
-     */
-    private $installerDataPath;
+    private string $installerDataPath;
 
-    /**
-     * @var string
-     */
-    private $storagePath;
+    private string $storagePath;
 
     public function setInstallerDataPath(string $installerDataPath): void
     {
