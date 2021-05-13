@@ -33,7 +33,7 @@ class NetgenSiteInstaller extends BaseInstaller
     {
         $this->importSchemaFile(
             $this->installerDataPath . '/../schema/schema.sql',
-            'ezcontentobject'
+            'ezcontentobject',
         );
     }
 
@@ -41,7 +41,7 @@ class NetgenSiteInstaller extends BaseInstaller
     {
         $this->importDataFile(
             $this->installerDataPath . '/data.sql',
-            'ezcontentobject'
+            'ezcontentobject',
         );
     }
 
@@ -79,7 +79,7 @@ class NetgenSiteInstaller extends BaseInstaller
 
         $fs->mirror(
             $this->installerDataPath . '/storage',
-            $this->storagePath
+            $this->storagePath,
         );
     }
 }

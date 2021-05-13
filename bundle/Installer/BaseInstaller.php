@@ -14,7 +14,7 @@ abstract class BaseInstaller extends DbBasedInstaller implements Installer
      *
      * Schema file is created with: mysqldump ngsite --no-data > schema.sql
      */
-    protected function importSchemaFile(string $schemaFile, string $controlTableName = null): void
+    protected function importSchemaFile(string $schemaFile, ?string $controlTableName = null): void
     {
         if ($controlTableName !== null) {
             if ($this->db->getSchemaManager()->tablesExist([$controlTableName])) {
@@ -32,7 +32,7 @@ abstract class BaseInstaller extends DbBasedInstaller implements Installer
      *
      * Data file is created with: mysqldump ngsite --no-create-info --extended-insert=false > data.sql
      */
-    protected function importDataFile(string $dataFile, string $controlTableName = null): void
+    protected function importDataFile(string $dataFile, ?string $controlTableName = null): void
     {
         if ($controlTableName !== null) {
             $query = $this->db->createQueryBuilder();
