@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "php": "^7.4",
         "ezsystems/ezpublish-kernel": "^7.5"
     },
     "autoload": {
@@ -16,7 +17,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1.x-dev"
+            "dev-master": "1.2.x-dev"
         }
     }
 }
