@@ -9,15 +9,9 @@ use Symfony\Component\Finder\Finder;
 
 class NetgenSiteInstaller extends BaseInstaller
 {
-    /**
-     * @var string
-     */
-    protected $installerDataPath;
+    protected string $installerDataPath;
 
-    /**
-     * @var string
-     */
-    protected $storagePath;
+    protected string $storagePath;
 
     public function setInstallerDataPath(string $installerDataPath): void
     {
@@ -33,7 +27,7 @@ class NetgenSiteInstaller extends BaseInstaller
     {
         $this->importSchemaFile(
             $this->installerDataPath . '/../schema/schema.sql',
-            'ezcontentobject'
+            'ezcontentobject',
         );
     }
 
@@ -41,7 +35,7 @@ class NetgenSiteInstaller extends BaseInstaller
     {
         $this->importDataFile(
             $this->installerDataPath . '/data.sql',
-            'ezcontentobject'
+            'ezcontentobject',
         );
     }
 
@@ -79,7 +73,7 @@ class NetgenSiteInstaller extends BaseInstaller
 
         $fs->mirror(
             $this->installerDataPath . '/storage',
-            $this->storagePath
+            $this->storagePath,
         );
     }
 }
