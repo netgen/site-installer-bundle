@@ -48,6 +48,16 @@ class NetgenRemoteMediaSiteInstaller extends NetgenSiteInstaller
         $this->excludedFieldIdentifiers = $excludedFieldIdentifiers;
     }
 
+    public function importSchema(): void
+    {
+        parent::importSchema();
+
+        $this->importSchemaFile(
+            $this->installerDataPath . '/../schema/remote_media_schema.sql',
+            'ngremotemedia_field_link',
+        );
+    }
+
     public function importData(): void
     {
         parent::importData();
