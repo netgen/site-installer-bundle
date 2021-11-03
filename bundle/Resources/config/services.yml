@@ -32,10 +32,9 @@ services:
         public: false
         calls:
             - [ setInstallerDataPath, [ "%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media-clean" ] ]
-            - [ setStoragePath, [ web/var/site/storage ] ]
             - [ setRepository, [ "@ezpublish.api.repository" ] ]
             - [ setFieldTypesToMigrate, [ "%netgen_site_installer.remote_media.field_types_to_migrate%" ] ]
             - [ setExcludedFieldIdentifiers, [ "%netgen_site_installer.remote_media.excluded_field_identifiers%" ] ]
-        parent: ezplatform.installer.db_based_installer
+        parent: netgen_site_installer.media_site_clean
         tags:
             - { name: ezplatform.installer, type: netgen-media-remote-clean }

@@ -27,6 +27,14 @@ class NetgenRemoteMediaSiteInstaller extends NetgenSiteInstaller
      */
     private array $excludedFieldIdentifiers = [];
 
+    private string $installerDataPath;
+
+    public function setInstallerDataPath(string $installerDataPath): void
+    {
+        $this->installerDataPath = $installerDataPath;
+        parent::setInstallerDataPath($installerDataPath);
+    }
+
     public function setRepository(Repository $repository): void
     {
         $this->repository = $repository;
