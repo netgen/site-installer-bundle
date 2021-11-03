@@ -31,7 +31,6 @@ services:
         class: Netgen\Bundle\SiteInstallerBundle\Installer\NetgenRemoteMediaSiteInstaller
         public: false
         calls:
-            - [ setInstallerDataPath, [ "%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media-clean" ] ]
             - [ setRepository, [ "@ezpublish.api.repository" ] ]
             - [ setFieldTypesToMigrate, [ "%netgen_site_installer.remote_media.field_types_to_migrate%" ] ]
             - [ setExcludedFieldIdentifiers, [ "%netgen_site_installer.remote_media.excluded_field_identifiers%" ] ]
