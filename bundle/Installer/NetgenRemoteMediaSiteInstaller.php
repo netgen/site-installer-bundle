@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Netgen\Bundle\SiteInstallerBundle\Installer;
 
 use eZ\Publish\API\Repository\Repository;
+use eZ\Publish\API\Repository\ContentTypeService;
 use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 use eZ\Publish\API\Repository\Values\ContentType\ContentTypeDraft;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
@@ -12,25 +13,19 @@ use Throwable;
 
 class NetgenRemoteMediaSiteInstaller extends NetgenSiteInstaller
 {
-    /**
-     * @var \eZ\Publish\API\Repository\ContentTypeService
-     */
-    private $contentTypeService;
+    private ContentTypeService $contentTypeService;
 
-    /**
-     * @var \eZ\Publish\API\Repository\Repository
-     */
-    private $repository;
+    private Repository $repository;
 
     /**
      * @var string[]
      */
-    private $fieldTypesToMigrate = [];
+    private array $fieldTypesToMigrate = [];
 
     /**
      * @var string[]
      */
-    private $excludedFieldIdentifiers = [];
+    private array $excludedFieldIdentifiers = [];
 
     public function setRepository(Repository $repository): void
     {
