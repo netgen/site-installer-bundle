@@ -2,6 +2,7 @@ parameters:
     netgen_site_installer.remote_media.field_types_to_migrate:
         - ezimage
         - ezbinaryfile
+        - ezmedia
 
     netgen_site_installer.remote_media.excluded_field_identifiers: []
 

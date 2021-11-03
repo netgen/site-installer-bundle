@@ -62,7 +62,7 @@ class NetgenRemoteMediaSiteInstaller extends NetgenSiteInstaller
     {
         parent::importData();
 
-        $this->output->writeln('<comment>Migrating <info>ezimage</info> and <info>ezbinaryfile</info> fields to <info>ngremotemedia</info></comment>');
+        $this->output->writeln('<comment>Migrating <info>ezimage, ezbinaryfile, ezmedia</info> fields to <info>ngremotemedia</info></comment>');
 
         $contentTypes = $this->getContentTypes();
         foreach ($contentTypes as $contentType) {
