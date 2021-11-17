@@ -10,7 +10,7 @@ use Symfony\Component\Finder\Finder;
 class NetgenSiteInstaller extends BaseInstaller
 {
     /**
-     * Set as `protected` as it is being used in child class NetgenRemoteMediaSiteInstaller
+     * Set as `protected` as it is being used in child class NetgenRemoteMediaSiteInstaller.
      */
     protected string $installerDataPath;
 

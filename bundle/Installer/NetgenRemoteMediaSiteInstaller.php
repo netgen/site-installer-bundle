@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\SiteInstallerBundle\Installer;
 
-use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\ContentTypeService;
+use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\Values\ContentType\ContentType;
 use eZ\Publish\API\Repository\Values\ContentType\ContentTypeDraft;
 use eZ\Publish\API\Repository\Values\ContentType\FieldDefinition;
 use Throwable;
+use function array_merge;
+use function in_array;
 
 class NetgenRemoteMediaSiteInstaller extends NetgenSiteInstaller
 {
@@ -67,9 +69,7 @@ class NetgenRemoteMediaSiteInstaller extends NetgenSiteInstaller
 
             try {
                 $contentTypeDraft = $this->repository->sudo(
-                    static function (Repository $repository) use ($contentType): ContentTypeDraft {
-                        return $repository->getContentTypeService()->createContentTypeDraft($contentType);
-                    }
+                    static fn (Repository $repository): ContentTypeDraft => $repository->getContentTypeService()->createContentTypeDraft($contentType),
                 );
 
                 foreach ($fieldsToMigrate as $fieldDefinition) {
@@ -79,7 +79,7 @@ class NetgenRemoteMediaSiteInstaller extends NetgenSiteInstaller
                 $this->repository->sudo(
                     static function (Repository $repository) use ($contentTypeDraft): void {
                         $repository->getContentTypeService()->publishContentTypeDraft($contentTypeDraft);
-                    }
+                    },
                 );
 
                 $this->repository->commit();
@@ -131,14 +131,14 @@ class NetgenRemoteMediaSiteInstaller extends NetgenSiteInstaller
             static function (Repository $repository) use ($contentTypeDraft, $fieldDefinition): void {
                 $repository->getContentTypeService()->removeFieldDefinition(
                     $contentTypeDraft,
-                    $fieldDefinition
+                    $fieldDefinition,
                 );
-            }
+            },
         );
 
         $fieldDefinitionCreateStruct = $this->contentTypeService->newFieldDefinitionCreateStruct(
             $fieldDefinition->identifier,
-            'ngremotemedia'
+            'ngremotemedia',
         );
         $fieldDefinitionCreateStruct->names = $fieldDefinition->getNames();
         $fieldDefinitionCreateStruct->position = $fieldDefinition->position;
@@ -146,7 +146,7 @@ class NetgenRemoteMediaSiteInstaller extends NetgenSiteInstaller
         $this->repository->sudo(
             static function (Repository $repository) use ($contentTypeDraft, $fieldDefinitionCreateStruct): void {
                 $repository->getContentTypeService()->addFieldDefinition($contentTypeDraft, $fieldDefinitionCreateStruct);
-            }
+            },
         );
     }
 }
