@@ -9,15 +9,15 @@
         }
     ],
     "require": {
-        "php": "^7.4",
-        "ezsystems/ezplatform-kernel": "^1.3"
+        "php": "^7.4 || ^8.0",
+        "ibexa/core": "^4.0"
     },
     "autoload": {
         "psr-4": { "Netgen\\Bundle\\SiteInstallerBundle\\": "bundle/" }
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.1.x-dev"
+            "dev-master": "3.0.x-dev"
         }
     }
 }
