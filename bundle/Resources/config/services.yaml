@@ -4,15 +4,15 @@ services:
         calls:
             - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media"]]
             - [setStoragePath, [public/var/site/storage]]
-        parent: EzSystems\PlatformInstallerBundle\Installer\DbBasedInstaller
+        parent: Ibexa\Bundle\RepositoryInstaller\Installer\DbBasedInstaller
         tags:
-            - { name: ezplatform.installer, type: netgen-media }
+            - { name: ibexa.installer, type: netgen-media }
 
     netgen_site_installer.media_site_clean:
         class: Netgen\Bundle\SiteInstallerBundle\Installer\NetgenSiteInstaller
         calls:
             - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media-clean"]]
             - [setStoragePath, [public/var/site/storage]]
-        parent: EzSystems\PlatformInstallerBundle\Installer\DbBasedInstaller
+        parent: Ibexa\Bundle\RepositoryInstaller\Installer\DbBasedInstaller
         tags:
-            - { name: ezplatform.installer, type: netgen-media-clean }
+            - { name: ibexa.installer, type: netgen-media-clean }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Netgen\Bundle\SiteInstallerBundle\Installer;
 
-use EzSystems\PlatformInstallerBundle\Installer\DbBasedInstaller;
-use EzSystems\PlatformInstallerBundle\Installer\Installer;
+use Ibexa\Bundle\RepositoryInstaller\Installer\DbBasedInstaller;
+use Ibexa\Bundle\RepositoryInstaller\Installer\Installer;
 
 abstract class BaseInstaller extends DbBasedInstaller implements Installer
 {
