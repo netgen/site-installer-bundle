@@ -14,6 +14,11 @@ final class NetgenSiteInstallerExtension extends Extension
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.yaml');
+
+        if (is_dir($container->getParameter('kernel.project_dir') . '/vendor/netgen/media-site-legacy-data')) {
+            $loader->load('services_legacy.yaml');
+        } else {
+            $loader->load('services.yaml');
+        }
     }
 }

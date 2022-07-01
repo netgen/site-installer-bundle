@@ -1,0 +1,18 @@
+services:
+    netgen_site_installer.media_site_legacy:
+        class: Netgen\Bundle\SiteInstallerBundle\Installer\NetgenSiteInstaller
+        calls:
+            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-legacy-data/netgen-media"]]
+            - [setStoragePath, [public/var/site/storage]]
+        parent: Ibexa\Bundle\RepositoryInstaller\Installer\DbBasedInstaller
+        tags:
+            - { name: ibexa.installer, type: netgen-media-legacy }
+
+    netgen_site_installer.media_site_legacy_clean:
+        class: Netgen\Bundle\SiteInstallerBundle\Installer\NetgenSiteInstaller
+        calls:
+            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-legacy-data/netgen-media-clean"]]
+            - [setStoragePath, [public/var/site/storage]]
+        parent: Ibexa\Bundle\RepositoryInstaller\Installer\DbBasedInstaller
+        tags:
+            - { name: ibexa.installer, type: netgen-media-legacy-clean }
