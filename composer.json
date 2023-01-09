@@ -9,8 +9,8 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
-        "ibexa/core": "^4.0"
+        "php": "^7.4 || ^8.1",
+        "ibexa/core": "^4.3"
     },
     "autoload": {
         "psr-4": { "Netgen\\Bundle\\SiteInstallerBundle\\": "bundle/" }
