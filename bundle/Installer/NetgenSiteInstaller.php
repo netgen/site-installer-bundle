@@ -7,7 +7,7 @@ namespace Netgen\Bundle\SiteInstallerBundle\Installer;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
-final class NetgenSiteInstaller extends BaseInstaller
+class NetgenSiteInstaller extends BaseInstaller
 {
     private string $installerDataPath;
 
