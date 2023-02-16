@@ -37,7 +37,7 @@ abstract class BaseInstaller extends DbBasedInstaller implements Installer
             $query->select('count(*) AS count')
                 ->from($controlTableName);
 
-            $data = $query->execute()->fetchAll();
+            $data = $query->execute()->fetchAllAssociative();
 
             $contentCount = (int) $data[0]['count'];
             if ($contentCount > 0) {
