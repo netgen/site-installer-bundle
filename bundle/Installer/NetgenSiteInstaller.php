@@ -13,6 +13,11 @@ class NetgenSiteInstaller extends BaseInstaller
 
     private string $storagePath;
 
+    /**
+     * @var array<string[]>
+     */
+    private array $additionalSchemaFiles = [];
+
     public function setInstallerDataPath(string $installerDataPath): void
     {
         $this->installerDataPath = $installerDataPath;
@@ -23,12 +28,26 @@ class NetgenSiteInstaller extends BaseInstaller
         $this->storagePath = $storagePath;
     }
 
+    public function addSchemaFile(string $schemaFile, string $controlTable): void
+    {
+        $this->additionalSchemaFiles[] = [$schemaFile, $controlTable];
+    }
+
     public function importSchema(): void
     {
         $this->importSchemaFile(
             $this->installerDataPath . '/../schema/schema.sql',
             'ezcontentobject',
         );
+
+        foreach ($this->additionalSchemaFiles as $additionalSchemaFile) {
+            if (file_exists($additionalSchemaFile[0])) {
+                $this->importSchemaFile(
+                    $additionalSchemaFile[0],
+                    $additionalSchemaFile[1],
+                );
+            }
+        }
     }
 
     public function importData(): void

@@ -2,8 +2,9 @@ services:
     netgen_site_installer.media_site_legacy:
         class: Netgen\Bundle\SiteInstallerBundle\Installer\NetgenSiteInstaller
         calls:
-            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-legacy-data/netgen-media"]]
+            - [setInstallerDataPath, ["%kernel.project_dir%/vendor/netgen/media-site-data/netgen-media"]]
             - [setStoragePath, [public/var/site/storage]]
+            - [addSchemaFile, ["%kernel.project_dir%/ezpublish_legacy/share/legacy_schema.sql", "ezcontentobject"]]
         parent: Ibexa\Bundle\RepositoryInstaller\Installer\DbBasedInstaller
         tags:
             - { name: ibexa.installer, type: netgen-media-legacy }
