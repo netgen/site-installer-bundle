@@ -7,6 +7,9 @@ namespace Netgen\Bundle\SiteInstallerBundle\Installer;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
+use function file_exists;
+use function sprintf;
+
 class NetgenSiteInstaller extends BaseInstaller
 {
     private string $installerDataPath;
@@ -76,7 +79,12 @@ class NetgenSiteInstaller extends BaseInstaller
                 ->in($this->storagePath);
 
             if ($finder->count() > 0) {
-                $this->output->writeln('<comment>Storage directory <info>' . $this->storagePath . '</info> already exists and is not empty, skipping creation...</comment>');
+                $this->output->writeln(
+                    sprintf(
+                        '<comment>Storage directory <info>%s</info> already exists and is not empty, skipping creation...</comment>',
+                        $this->storagePath,
+                    ),
+                );
 
                 return;
             }
@@ -88,7 +96,12 @@ class NetgenSiteInstaller extends BaseInstaller
             return;
         }
 
-        $this->output->writeln('Copying storage directory to <info>' . $this->storagePath . '</info>');
+        $this->output->writeln(
+            sprintf(
+                'Copying storage directory to <info>%s</info>',
+                $this->storagePath,
+            ),
+        );
 
         $fs->mirror(
             $this->installerDataPath . '/storage',

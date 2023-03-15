@@ -7,6 +7,8 @@ namespace Netgen\Bundle\SiteInstallerBundle\Installer;
 use Ibexa\Bundle\RepositoryInstaller\Installer\DbBasedInstaller;
 use Ibexa\Bundle\RepositoryInstaller\Installer\Installer;
 
+use function sprintf;
+
 abstract class BaseInstaller extends DbBasedInstaller implements Installer
 {
     /**
@@ -41,7 +43,12 @@ abstract class BaseInstaller extends DbBasedInstaller implements Installer
 
             $contentCount = (int) $data[0]['count'];
             if ($contentCount > 0) {
-                $this->output->writeln('<comment>Data already exists in the database, skipping data import for file <info>' . $dataFile . '</info></comment>');
+                $this->output->writeln(
+                    sprintf(
+                        '<comment>Data already exists in the database, skipping data import for file <info>%s</info></comment>',
+                        $dataFile,
+                    ),
+                );
 
                 return;
             }

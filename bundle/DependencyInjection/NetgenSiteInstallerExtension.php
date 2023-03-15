@@ -13,11 +13,17 @@ use function is_dir;
 
 final class NetgenSiteInstallerExtension extends Extension
 {
+    /**
+     * @param mixed[] $configs
+     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
-        if (is_dir($container->getParameter('kernel.project_dir') . '/ezpublish_legacy')) {
+        /** @var string $projectDir */
+        $projectDir = $container->getParameter('kernel.project_dir');
+
+        if (is_dir($projectDir . '/ezpublish_legacy')) {
             $loader->load('services_legacy.yaml');
         } else {
             $loader->load('services.yaml');
