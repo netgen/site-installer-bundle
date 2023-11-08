@@ -6,6 +6,4 @@ namespace Netgen\Bundle\SiteInstallerBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class NetgenSiteInstallerBundle extends Bundle
-{
-}
+final class NetgenSiteInstallerBundle extends Bundle {}

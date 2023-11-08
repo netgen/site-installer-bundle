@@ -61,9 +61,7 @@ class NetgenSiteInstaller extends BaseInstaller
         );
     }
 
-    public function createConfiguration(): void
-    {
-    }
+    public function createConfiguration(): void {}
 
     public function importBinaries(): void
     {
