@@ -40,7 +40,7 @@ class NetgenSiteInstaller extends BaseInstaller
     {
         $this->importSchemaFile(
             $this->installerDataPath . '/../schema/schema.sql',
-            'ezcontentobject',
+            'ibexa_content',
         );
 
         foreach ($this->additionalSchemaFiles as $additionalSchemaFile) {
@@ -57,7 +57,7 @@ class NetgenSiteInstaller extends BaseInstaller
     {
         $this->importDataFile(
             $this->installerDataPath . '/data.sql',
-            'ezcontentobject',
+            'ibexa_content',
         );
     }
 

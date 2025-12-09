@@ -6,10 +6,8 @@ namespace Netgen\Bundle\SiteInstallerBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-
-use function is_dir;
 
 final class NetgenSiteInstallerExtension extends Extension
 {
@@ -20,13 +18,6 @@ final class NetgenSiteInstallerExtension extends Extension
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
 
-        /** @var string $projectDir */
-        $projectDir = $container->getParameter('kernel.project_dir');
-
-        if (is_dir($projectDir . '/ezpublish_legacy')) {
-            $loader->load('services_legacy.yaml');
-        } else {
-            $loader->load('services.yaml');
-        }
+        $loader->load('services.yaml');
     }
 }
